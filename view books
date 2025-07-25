@@ -1,0 +1,15 @@
+void viewBooks() {
+        if (books.empty()) {
+            cout << "No books available.\n";
+            return;
+        }
+        cout << "\nAvailable Books:\n";
+        for (auto& book : books) {
+            cout << "Title: " << book.title << ", Author: " << book.author << endl;
+        }
+    }
+
+    bool isBookAvailable(const string& title) {
+        return any_of(books.begin(), books.end(), [&](Book& b) { return b.title == title; });
+    }
+};
