@@ -1,0 +1,41 @@
+class Student : public User {
+    vector<string> borrowedBooks;
+
+public:
+    Student(string n) : User(n) {}
+
+    void menu(Library& lib) override {
+        int choice;
+        do {
+            cout << "\nWelcome, " << name << " (Student)\n";
+            cout << "1. View Books\n2. Issue Book\n3. Return Book\n4. Exit\nEnter choice: ";
+            cin >> choice;
+            cin.ignore();
+
+            if (choice == 1) {
+                lib.viewBooks();
+            } else if (choice == 2) {
+                string title;
+                cout << "Enter title of book to issue: ";
+                getline(cin, title);
+                if (lib.isBookAvailable(title)) {
+                    borrowedBooks.push_back(title);
+                    cout << "Book issued successfully.\n";
+                } else {
+                    cout << "Book not available.\n";
+                }
+            } else if (choice == 3) {
+                string title;
+                cout << "Enter title of book to return: ";
+                getline(cin, title);
+                auto it = find(borrowedBooks.begin(), borrowedBooks.end(), title);
+                if (it != borrowedBooks.end()) {
+                    borrowedBooks.erase(it);
+                    cout << "Book returned successfully.\n";
+                } else {
+                    cout << "You haven’t borrowed this book.\n";
+                }
+            }
+        } while (choice != 4);
+    }
+};
