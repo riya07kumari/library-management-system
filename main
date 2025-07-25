@@ -1,0 +1,5 @@
+int main() {
+    Library lib;
+    loginSystem(lib);
+    return 0;
+}
