@@ -1,0 +1,30 @@
+class Librarian : public User {
+public:
+    Librarian(string n) : User(n) {}
+
+    void menu(Library& lib) override {
+        int choice;
+        do {
+            cout << "\nWelcome, Librarian\n";
+            cout << "1. Add Book\n2. Delete Book\n3. View Books\n4. Exit\nEnter choice: ";
+            cin >> choice;
+            cin.ignore();
+
+            if (choice == 1) {
+                string title, author;
+                cout << "Enter book title: ";
+                getline(cin, title);
+                cout << "Enter author: ";
+                getline(cin, author);
+                lib.addBook(Book(title, author));
+            } else if (choice == 2) {
+                string title;
+                cout << "Enter title to delete: ";
+                getline(cin, title);
+                lib.deleteBook(title);
+            } else if (choice == 3) {
+                lib.viewBooks();
+            }
+        } while (choice != 4);
+    }
+};
