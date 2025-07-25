@@ -1,0 +1,8 @@
+class User {
+protected:
+    string name;
+
+public:
+    User(string n) : name(n) {}
+    virtual void menu(Library& lib) = 0;
+};
