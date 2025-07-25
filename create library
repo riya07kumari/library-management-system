@@ -1,0 +1,19 @@
+class Library {
+private:
+    vector<Book> books;
+
+public:
+    void addBook(const Book& book) {
+        books.push_back(book);
+        cout << "Book added successfully.\n";
+    }
+
+    void deleteBook(const string& title) {
+        auto it = find_if(books.begin(), books.end(), [&](Book& b) { return b.title == title; });
+        if (it != books.end()) {
+            books.erase(it);
+            cout << "Book deleted successfully.\n";
+        } else {
+            cout << "Book not found.\n";
+        }
+    }
