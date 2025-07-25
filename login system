@@ -1,0 +1,31 @@
+void loginSystem(Library& lib) {
+    while (true) {
+        cout << "\n===== Library Login =====\n";
+        cout << "1. Librarian\n2. Student\n3. Exit\nEnter choice: ";
+        int choice;
+        cin >> choice;
+        cin.ignore();
+
+        if (choice == 1) {
+            string username, password;
+            cout << "Enter username: ";
+            getline(cin, username);
+            cout << "Enter password: ";
+            getline(cin, password);
+            if (username == "admin" && password == "admin123") {
+                Librarian libUser("Librarian");
+                libUser.menu(lib);
+            } else {
+                cout << "Invalid credentials.\n";
+            }
+        } else if (choice == 2) {
+            string studentName;
+            cout << "Enter your name: ";
+            getline(cin, studentName);
+            Student stu(studentName);
+            stu.menu(lib);
+        } else if (choice == 3) {
+            break;
+        }
+    }
+}
