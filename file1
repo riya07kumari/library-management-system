@@ -1,0 +1,13 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+class Book {
+public:
+    string title;
+    string author;
+
+    Book(string t, string a) : title(t), author(a) {}
+};
